@@ -1,0 +1,9 @@
+when to use which one and what are the advantages and disadvantages, pratical uses, performance considerations of each one. please advise
+
+JdbcCursorItemReader you read all the records from the database, you hold them in memory and you go up and down the result set by using 
+a cursor (a cursor points to the current row of data). When a user changes page you don't read the data from the database again.
+
+JdbcPagingItemReader you read chunks of records from the database. But when the user changes page you issue another query and read the data again.
+
+First approach: You consume more memory but it's faster.
+Second approach: You consume less memory but it's slower.
